@@ -1,18 +1,21 @@
-import { Suspense } from "react";
+import { Suspense, SuspenseList } from "react";
+import UserWelcome from "./Components/UserWelcome";
+import Todos from "./Components/Todos";
 
 const App = () => {
   return (
     <div className="app">
-      <h1>Here are your Todos for today</h1>
-      <p>Click on any todo to view more details about it</p>
-      <h3>Pending Todos</h3>
-      <Suspense fallback={<h1>Loading Pending Todos...</h1>}>
+      <h2>Simple Todo</h2>
 
-      </Suspense>
-      <h3>Completed Todos</h3>
-      <Suspense fallback={<h1>Loading Completed Todos...</h1>}>
-        
-      </Suspense>
+      <SuspenseList revealOrder="forwards">
+        <Suspense fallback={<h1>Loading user details...</h1>}>
+          <UserWelcome />
+        </Suspense>
+
+        <Suspense fallback={<h1>Loading Todos...</h1>}>
+          <Todos />
+        </Suspense>
+      </SuspenseList>
     </div>
   )
 }
