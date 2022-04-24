@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
     Chart as ChartJS,
     RadialLinearScale,
@@ -9,6 +9,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Radar } from 'react-chartjs-2';
+import CountryContext from '../../../context/CountryContext';
 
 ChartJS.register(
     RadialLinearScale,
@@ -16,31 +17,43 @@ ChartJS.register(
     LineElement,
     Filler,
     Tooltip,
-    Legend
+    Legend,
 );
 
-export const data = {
-    labels: ['Recovered', 'Deaths', 'Infected'],
+const initData = {
+    labels: ['Infected', 'Recovered', 'Deaths'],
     datasets: [
         {
-            label: 'Global Stats',
-            data: [0, 9, 3],
+            label: 'Stats',
+            data: [0, 0, 0],
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
             borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1,
-        },
-        {
-            label: 'Global 2 Stats',
-            data: [3, 5, 6],
-            backgroundColor: 'rgba(255, 199, 32, 0.2)',
-            borderColor: 'rgba(250, 200, 40, 1)',
             borderWidth: 1,
         },
     ],
 };
 
 export function RadarChart() {
-    return <div style={{height: "600px", width: "600px"}}>
-        <Radar data={data} />;
+    let [data, setData] = useState(() => initData)
+    let { countryName, countryData } = useContext(CountryContext);
+
+    useEffect(() => {
+        let { confirmed, recovered, deaths } = countryData
+        setData(() => ({
+            labels: ['Infected', 'Recovered', 'Deaths'],
+            datasets: [
+                {
+                    label: `${countryName} Stats`,
+                    data: [confirmed, recovered, deaths],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                },
+            ],
+        }))
+    }, [countryData])
+
+    return <div style={{ height: "600px", width: "600px", margin: "20px auto 0" }}>
+        <Radar data={data} />
     </div>
 }

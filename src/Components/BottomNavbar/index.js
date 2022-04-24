@@ -4,24 +4,36 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import RestoreIcon from '@mui/icons-material/Restore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { RadarChart } from '../Chart/RadarChart';
+import CountryContext from '../../context/CountryContext';
+import FetchData from '../../api';
 
 export default function BottomNavbar() {
-    const [value, setValue] = React.useState(0);
+    const { selectedTab, changeSelectedTab, changeCountryName, changeCountryData } = React.useContext(CountryContext)
+
+    const tabSelectionChange = async (val) => {
+        changeCountryName("Global")
+        changeSelectedTab(val)
+        let { confirmed, recovered, deaths } = await FetchData("Global")
+        changeCountryData({ confirmed, recovered, deaths })
+    }
 
     return (
-        <Box >
+        <Box>
             <BottomNavigation
-                showLabels
-                value={value}
-                onChange={(event, newValue) => {
-                    setValue(newValue);
+                style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    borderTop: "1px solid #ccc",
+                    padding: "5px",
                 }}
+                showLabels
+                value={selectedTab}
+                onChange={(event, newValue) => tabSelectionChange(newValue)}
             >
-                <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-                <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-                <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} />
+                <BottomNavigationAction label="Global Stats" icon={<RestoreIcon />} />
+                <BottomNavigationAction label="Country Stats" icon={<FavoriteIcon />} />
             </BottomNavigation>
         </Box>
     );
