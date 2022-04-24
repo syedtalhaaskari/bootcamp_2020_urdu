@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from "./Components/Navbar"
 import "./App.css";
 import { RadarChart } from './Components/Chart/RadarChart';
+import BottomNavbar from './Components/BottomNavbar';
 
 const App = props => {
 
@@ -9,6 +10,7 @@ const App = props => {
         <div>
             <Navbar />
             <RadarChart />
+            <BottomNavbar />
         </div>
     )
 }
