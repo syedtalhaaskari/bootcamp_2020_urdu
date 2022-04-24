@@ -1,4 +1,5 @@
-# Surge Link bootcamp_session_3_sta.surge.sh
+# Surge Old Link: http://stacovid19trackerapp.surge.sh/
+# Surge New Link: https://bootcamp_covid19_tracker_sta.surge.sh/
 
 # Getting Started with Create React App
 
