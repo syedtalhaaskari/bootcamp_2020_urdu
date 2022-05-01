@@ -1,7 +1,10 @@
+import "./App.css";
+import RouteConfig from "./RouteConfig";
+
 const App = () => {
   return (
     <div className="App">
-      <h1>Session 3</h1>
+      <RouteConfig />
     </div>
   )
 }
