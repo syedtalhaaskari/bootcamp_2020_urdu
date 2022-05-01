@@ -1,15 +1,21 @@
-.product-container {
+.navbar {
   display: flex;
-  flex-wrap: wrap;
+  list-style-type: none;
+  background-color: #cccccc;
+  padding: 1rem;
 }
 
-.product-container > .link {
-  text-align: center;
-  width: 300px;
-  box-shadow: 0 0 10px #463636;
-  margin: 10px;
+.navbar li {
+  cursor: pointer;
+  margin-right: 1rem;
+  font-size: 1.2rem;
 }
 
-.product-container > .link:hover {
-  background-color: lightgray;
+.navbar li a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.navbar li.active {
+  background-color: #a5a5a5;
 }
