@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            background-image: url('./images/bg.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #box {
+            margin: 20px auto;
+            height: 400px;
+            width: 400px;
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+        }
+
+        /* img {
+            position: absolute;
+        } */
+    </style>
+</head>
+
+<body>
+    <img src="./images/cloud1.gif" alt="cloud" id="cloud1" />
+    <img src="./images/cloud1.gif" alt="cloud" id="cloud2" />
+    <img src="./images/cloud1.gif" alt="cloud" id="cloud3" />
+    <img src="./images/cloud1.gif" alt="cloud" id="cloud4" />
+    <img src="./images/cloud1.gif" alt="cloud" id="cloud5" />
+
+    <script>
+        var elem = []
+        var animatedElem = []
+
+        for (var i = 0; i < 5; i++) {
+            elem = [
+                ...elem,
+                document.querySelector(`#cloud${i + 1}`)
+            ];
+            animatedElem = [
+                ...animatedElem,
+                elem[i].animate([
+                    {
+                        transform: `translate(
+                        ${Math.round(Math.random() * -20) - 20}px,
+                        ${Math.round(Math.random() * 20)}px,
+                        )` },
+                    {
+                        transform: `translate(
+                        ${Math.round(Math.random() * 550)}px,
+                        ${Math.round(Math.random() * 80)}px
+                        )` },
+                    {
+                        transform: `translate(
+                        ${Math.round(Math.random() * 80)}vw,
+                        ${Math.round(Math.random() * 20)}px
+                        )` },
+                    {
+                        transform: `translate(
+                        ${Math.round(Math.random() * 550)}px,
+                        ${Math.round(Math.random() * 80)}px
+                        )` },
+                    {
+                        transform: `translate(
+                        ${Math.round(Math.random() * -20) - 20}px,
+                        ${Math.round(Math.random() * 20)}px
+                        )` },
+                ], {
+                    duration: Math.round(Math.random() * 5000) + 2000,
+                    iterations: Infinity,
+                })
+            ]
+            window.addEventListener("mousedown", () => {
+                animatedElem[i].pause();
+            })
+
+            window.addEventListener("mouseup", () => {
+                animatedElem1[i].play();
+            })
+        }
+
+
+    </script>
+</body>
+
+</html>

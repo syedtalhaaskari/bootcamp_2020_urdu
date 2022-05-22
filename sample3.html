@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        #box {
+            margin: 20px auto;
+            height: 400px;
+            width: 400px;
+            background-color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <h2>Warning!</h2>
+    </div>
+
+    <script>
+        var elem = document.querySelector('#box');
+
+        elem.animate([
+            { transform: 'scale(1)', background: 'red', color: 'white', },
+            { transform: 'scale(0.5)', background: 'darkcyan', color: 'white', },
+            { transform: 'scale(1)', background: 'red', color: 'white', },
+        ], {
+            duration: 4000,
+            iterations: Infinity,
+        })
+    </script>
+</body>
+
+</html>
