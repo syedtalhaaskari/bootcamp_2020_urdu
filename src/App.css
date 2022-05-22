@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+:root {
+  --body-background-color: #fff;
+  --nav-link-color: #777;
+  --nav-background-color: #ddd;
+  --nav-border-bottom-color: #aaa;
+  --nav-toggler-border-color: #777;
+  --nav-toggler-text-color: #777;
+  --main-heading-color: #444;
+  --products-heading-color: #666;
+  --shoe-heading-color: #444;
+  --image-shadow-color: #ccc;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background-color: var(--body-background-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+nav {
+  padding: 20px 10px;
+  background-color: var(--nav-background-color);
+  border-bottom: 1px solid var(--nav-border-bottom-color);
 }
 
-.App-link {
-  color: #61dafb;
+nav a {
+  text-decoration: none;
+  margin: 0 10px;
+  color: var(--nav-link-color);
+  font-size: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.toggler {
+  display: inline;
+  float:right;
+  margin-right: 10px;
+  border: 1px solid var(--nav-toggler-border-color);
+  color: var(--nav-toggler-text-color);
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-top: -3px;
+  cursor: pointer;
+  user-select: none;
+}
+
+h1 {
+  color: var(--main-heading-color);
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.homepage h3 {
+  color: var(--main-heading-color);
+  margin-top: 10px;
+  margin-left: 10px;
+  margin: 10px auto;
+  width: fit-content;
+  display: table;
+}
+
+.products-container {
+  width: fit-content;
+  display: table;
+  margin: 0 auto;
+}
+
+.products-container ul {
+  list-style: none;
+}
+
+.products-container ul li {
+  margin: 10px auto;
+}
+
+.products-container ul a {
+  text-decoration: none;
+}
+
+.products-container ul h3 {
+  color: var(--products-heading-color);
+  margin-bottom: 10px;
+}
+
+.products-container ul img {
+  width: 300px;
+  box-shadow: 0px 0px 10px var(--image-shadow-color);
+}
+
+.shoe-item {
+  width: fit-content;
+  display: table;
+  margin: 10px auto;
+}
+
+.shoe-item h2 {
+  color: var(--shoe-heading-color);
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.shoe-item img {
+  box-sizing: border-box;
+  width: 500px;
+  margin-top: 10px;
+  box-shadow: 0px 0px 20px var(--image-shadow-color);
 }
